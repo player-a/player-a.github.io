@@ -3,7 +3,7 @@ async function performCalculation() {
     const num2 = document.getElementById("num2").value;
     const operation = document.getElementById("operation").value;
 
-    const response = await fetch('https://my-complex-calculator-a3ecab1056de.herokuapp.com/', {
+    const response = await fetch('https://my-complex-calculator-a3ecab1056de.herokuapp.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
