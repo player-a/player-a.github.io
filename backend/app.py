@@ -1,6 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import os
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder='../frontend')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
@@ -17,6 +22,8 @@ def calculate():
         elif operation == 'multiply':
             result = num1 * num2
         elif operation == 'divide':
+            if num2 == 0:
+                raise ValueError("Cannot divide by zero.")
             result = num1 / num2
         else:
             raise ValueError("Invalid Operation")
